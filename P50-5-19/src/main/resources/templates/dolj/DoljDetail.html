@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dolj</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<div th:each="el: ${doljs}">
+    <p th:text="${el.name}"> </p>
+    <p th:number="${el.tax}"> </p>
+    <p th:text="${el.description}"> </p>
+    <p th:text="${el.salary}"> </p>
+    <p th:text="${el.max_bonus}"> </p>
+    <a th:href="'/Dolj/DoljEdit/' +${el.id}" class="btn btn-primary">Изменить</a>
+    <a th:href="'/Dolj/DoljDelete/' +${el.id}" class="btn btn-secondary">Удалить</a>
+</div>
+<a th:href="'/Dolj/Index'" class="btn btn-secondary"> Назад</a>
+</body>
+</html>

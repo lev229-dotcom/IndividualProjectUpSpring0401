@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поставщики складов</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<form  method="post">
+    <select name="listWareHouse">
+        <div th:each="element : ${listWareHouse}" >
+
+            <option th:value="${element.id}" th:text="${element.warehousename}"></option>
+
+        </div>
+
+    </select>
+    <select name="listSupplier">
+        <div th:each="element : ${listSupplier}" >
+
+            <option th:value="${element.id}" th:text="${element.supplier_name}"></option>
+
+        </div>
+
+    </select>
+    <input type="submit" value="Назначить поставщиков" class="btn btn-primary">
+</form>
+</body>
+</html>

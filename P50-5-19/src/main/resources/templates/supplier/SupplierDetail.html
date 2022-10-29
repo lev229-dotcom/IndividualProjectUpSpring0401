@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<div>
+    <div th:each="el: ${supplier}" >
+        <p th:text="${el.supplier_name}"> </p>
+        <p th:text="${el.representive}"> </p>
+        <p th:text="${el.supplier_address}"> </p>
+        Склады:
+        <div th:each="elp: ${el.wareHouses}" >
+            <p th:text="${elp.warehousename}"> </p>
+            <p th:text="${elp.warehouseaddress}"> </p>
+        </div>
+        <a th:href="'/Supplier/SupplierEdit/' +${el.id}" class="btn btn-primary">Изменить</a>
+        <a th:href="'/Supplier/SupplierDelete/' +${el.id}" class="btn btn-secondary">Удалить</a>
+    </div>
+    <br>
+
+    <a th:href="'/Supplier/Index'" class="btn btn-secondary"> Назад</a>
+</div>
+</body>
+</html>

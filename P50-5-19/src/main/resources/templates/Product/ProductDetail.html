@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<div>
+    <div th:each="el: ${product}" >
+        <p th:text="${el.categoryname}"> </p>
+        <p th:text="${el.categorydescription}"> </p>
+        Заказы:
+        <div th:each="elp: ${el.orders}" >
+            <p th:text="${elp.ordernumber}"> </p>
+            <p th:text="${elp.total_amount}"> </p>
+        </div>
+        <a th:href="'/Product/ProductEdit/' +${el.id}" class="btn btn-primary">Изменить</a>
+        <a th:href="'/Product/ProductDelete/' +${el.id}" class="btn btn-secondary">Удалить</a>
+    </div>
+    <br>
+
+    <a th:href="'/Product/Index'" class="btn btn-primary"> Назад</a>
+</div>
+</body>
+</html>

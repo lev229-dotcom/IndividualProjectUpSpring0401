@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <meta charset="UTF-8">
+  <title>Adress</title>
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<h1>Список Адресов</h1>
+<div class="column">
+  <div th:each="el: ${wh}">
+    <p th:text="${el.location}"> </p>
+    <a th:href="'/Adress/AdressDetail/'+${el.id}" class="btn btn-primary">Подробней</a>
+
+  </div>
+  <form action="/Adress/Filter" method="get">
+    <input type="text" name="search_name" placeholder="Поиск">
+    <input type="submit" placeholder="Найти" class="btn btn-success">
+  </form>
+  <form action="/Adress/FilterCategorized" method="get">
+    <input type="text" name="search_name" placeholder="Поиск(с неполным совпадением)">
+    <input type="submit" placeholder="Найти" class="btn btn-success">
+  </form>
+  <a th:href="'/Adress/AdressEmployee/'" class="btn btn-primary">Назначить работника</a><br>
+</div>
+<a href="/Adress/IndexAddAdress" class="btn btn-light">Добавить Адресс</a><br>
+<a href="/Home" class="btn btn-secondary">Home</a>
+</body>
+</html>

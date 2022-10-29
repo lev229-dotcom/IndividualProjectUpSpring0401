@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+    <meta charset="UTF-8">
+    <title>Dolj</title>
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<h1>Добавить склад</h1>
+<div>
+    <form method="post" th:object="${warehouse}">
+        <input th:field="*{warehouse_name}" type="text" placeholder="Наименование адреса" name="name"><br>
+        <div th:if="${#fields.hasErrors('warehouse_address')}" th:errors="*{warehouse_address}" style="color:red"></div><br>
+        <input th:field="*{warehouse_address}" type="text" placeholder="Адрес " name="tax"><br>
+
+
+        <input type="submit" value="Добавить должность" class="btn btn-primary">
+    </form>
+    <a href="/Warehouse/Index" class="btn btn-primary">Обратно</a>
+    <a href="/Home" class="btn btn-primary">Home</a>
+</div>
+</body>
+</html>

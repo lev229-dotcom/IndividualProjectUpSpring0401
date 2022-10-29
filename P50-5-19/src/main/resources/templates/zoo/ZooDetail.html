@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>More about your animals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header" :: headerMain></div>
+<div>
+    <div th:each="el: ${animal}">
+        <p th:text="${el.name}"> </p>
+        <p th:text="${el.age}"> </p>
+        <p th:text="${el.description}"> </p>
+        <p th:text="${el.mass}"> </p>
+        <a th:href="'/Zoo/ZooEdit/' +${el.id}">Edit</a>
+        <a th:href="'/Zoo/ZooDelete/' +${el.id}">Delete</a>
+    </div>
+    <a th:href="'/Zoo/Index'"> Назад</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<div>
+    <div th:each="el: ${warehouse}" >
+        <p th:text="${el.warehouse_name}"> </p>
+        <p th:text="${el.warehouse_address}"> </p>
+        Тип склада:
+        <p th:text="${el.warehousetype.warehousetypename}"> </p>
+        Продукты:
+        <div th:each="elp: ${el.product}" >
+            <p th:text="${elp.categoryname}"> </p>
+            <p th:text="${elp.categorydescription}"> </p>
+        </div>
+        Поставщики:
+        <div th:each="elp: ${el.suppliers}" >
+            <p th:text="${elp.supplier_name}"> </p>
+            <p th:text="${elp.representive}"> </p>
+            <p th:text="${elp.supplier_address}"> </p>
+        </div>
+        <a th:href="'/Warehouse/WarehouseEdit/' +${el.id}" class="btn btn-primary">Изменить</a>
+        <a th:href="'/Warehouse/WarehouseDelete/' +${el.id}" class="btn btn-secondary">Удалить</a>
+    </div>
+    <br>
+
+    <a th:href="'/Warehouse/Index'" class="btn btn-primary"> Назад</a>
+</div>
+</body>
+</html>

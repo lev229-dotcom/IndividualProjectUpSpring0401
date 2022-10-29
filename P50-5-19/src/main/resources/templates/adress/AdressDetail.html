@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Адресса</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<div>
+  <div th:each="el: ${adress}" >
+    <p th:text="${el.location}"> </p>
+    <p th:text="${el.date_of_arrival}"> </p>
+    Проживающие сотрудники:
+    <div th:each="elp: ${el.employees}" >
+      <p th:text="${elp.surname}"> </p>
+      <p th:text="${elp.name}"> </p>
+    </div>
+  </div>
+ <br>
+
+
+
+
+  <a th:href="'/Adress/Index'" class="btn btn-primary"> Назад</a>
+</div>
+</body>
+</html>

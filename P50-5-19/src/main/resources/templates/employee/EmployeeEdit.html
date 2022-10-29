@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Zoo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<h1>Изменить сотрудника</h1>
+
+<form method="post" th:object="${employee}">
+  <input th:field="*{name}"  type="text" placeholder="Имя " th:value="${employee.name}" name="name"><br>
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red"></div><br>
+  <input th:field="*{surname}"  type="text" placeholder="Фамилия " th:value="${employee.surname}" name="surname"><br>
+  <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color:red"></div><br>
+  <input th:field="*{patronymic}"  type="text" placeholder="Отчество " th:value="${employee.patronymic}" name="patronymic"><br>
+  <div th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}" style="color:red"></div><br>
+  <input th:field="*{age}" type="number" placeholder="Возраст" th:value="${employee.age}" name="age"><br>
+  <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color:red"></div><br>
+  <input th:field="*{amount_of_kids}" type="number" placeholder="Количество детей" th:value="${employee.amount_of_kids}" name="amount_of_kids"><br>
+  <div th:if="${#fields.hasErrors('amount_of_kids')}" th:errors="*{amount_of_kids}" style="color:red"></div><br>
+  <input th:field="*{nationality}" type="text" placeholder="Национальность" th:value="${employee.nationality}" name="nationality"><br>
+  <div th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}" style="color:red"></div><br>
+  Аккаунт
+  <br>
+  <input th:field="${account.nickname}" type="text" placeholder="Никнейм" name="nickname"><br>
+  <!--    <div th:if="${#fields.hasErrors('login')}" th:errors="${account.login}" style="color:red"></div><br>-->
+  <input th:field="${account.description_user}" type="text" placeholder="Информация" name="description_user"><br>
+  Должность
+  <br>
+  <select name="listDolj">
+    <div th:each="element : ${listDolj}">
+      <option th:value="${element.id}" th:text="${element.name}"></option>
+    </div>
+  </select>
+  <input type="submit" value="Изменить Работника" class="btn btn-primary">
+</form>
+<a th:href="'/Employee/EmployeeDetail/' +${employee.id}" class="btn btn-secondary">Обратно</a>
+
+
+</body>
+
+</html>

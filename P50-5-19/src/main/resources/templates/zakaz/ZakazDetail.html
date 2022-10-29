@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<div>
+    <div th:each="el: ${zakaz}" >
+        <p th:text="${el.ordernumber}"> </p>
+        <p th:text="${el.total_amount}"> </p>
+        Сотрудник:
+        <p th:text="${el.employee?.surname}"> </p>
+        Статус заказа:
+        <p th:text="${el.zakazstatus?.statusname}"> </p>
+        Статус оплаты:
+        <p th:text="${el.paymentzakazstatus?.paymentstatusname}"> </p>
+        Продукты:
+        <div th:each="elp: ${el.product}" >
+            <p th:text="${elp.categoryname}"> </p>
+            <p th:text="${elp.categorydescription}"> </p>
+        </div>
+        <a th:href="'/Zakaz/ZakazEdit/' +${el.id}"  class="btn btn-primary">Изменить</a>
+        <a th:href="'/Zakaz/ZakazDelete/' +${el.id}"  class="btn btn-primary">Удалить</a>
+    </div>
+    <br>
+
+    <a th:href="'/Zakaz/Index'" class="btn btn-primary"> Назад</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Zoo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header" :: headerMain></div>
+<h1>Edit animals</h1>
+
+    <form method="post">
+        <input type="text" placeholder="Имя животного" th:value="${animal.name}" name="name"><br>
+        <input type="text" placeholder="Описание животного" th:value="${animal.description}" name="description"><br>
+        <input type="number" placeholder="Возраст животного" th:value="${animal.age}" name="age"><br>
+        <input type="number" placeholder="Масса животного" th:value="${animal.mass}" name="mass"><br>
+        <input type="submit" value="Изменить животного">
+    </form>
+    <a th:href="'/Zoo/ZooEdit/' +${animal.id}" class="btn btn-secondary">Back</a>
+
+
+</body>
+
+</html>

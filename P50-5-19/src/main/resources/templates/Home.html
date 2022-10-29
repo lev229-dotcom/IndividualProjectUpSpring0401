@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Главная</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+<h1>Метод Get</h1>
+<form action="/Index/" method="get">
+<input type="number" placeholder="Первая цифра" name="firstdigit">
+
+<label for="option_get">Выберите операцию:</label>
+<select name="option_get" id="option_get">
+    <option value="plus" >+</option>
+    <option value="subtract">-</option>
+    <option value="divide" >/</option>
+    <option value="multiplication" >*</option>
+</select>
+    <input type="number" placeholder="Вторая цифра" name="seconddigit"><br>
+    <input type="submit" value="Посчитать">
+</form>
+<h1>Метод Post</h1>
+<form action="/Index/" method="post">
+    <input type="number" placeholder="Первая цифра" name="firstdigit">
+
+    <label for="option_post">Выберите операцию:</label>
+    <select name="option_post" id="option_post">
+        <option value="plus">+</option>
+        <option value="subtract" >-</option>
+        <option value="divide" >/</option>
+        <option value="multiplication" >*</option>
+    </select>
+    <input type="number" placeholder="Вторая цифра" name="seconddigit"><br>
+    <input type="submit" value="Посчитать">
+</form>
+<a href="/Zoo/Index/"> back to Zoo</a>
+<a href="/Employee/Index/"> To Employee</a>
+<a href="/Dolj/Index/"> To Dolj</a><br>
+<a href="/User/userView/">Редактировать пользователя</a>
+</body>
+</html>
